@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  database: compreinaovou2_development
+test:
+  <<: *default
+  database: compreinaovou2_test
+production:
+  <<: *default
+  database: compreinaovou2_production
+  username: compreinaovou2
+  password: <%= ENV['COMPREINAOVOU2_DATABASE_PASSWORD'] %>
+
