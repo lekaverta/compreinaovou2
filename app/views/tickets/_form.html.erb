@@ -1,47 +1,94 @@
 <%= form_with(model: ticket, local: true) do |form| %>
-  <% if ticket.errors.any? %>
+  <% if @errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+      <h2><%= pluralize(@errors.count, "error") %> prohibited this ticket from being saved:</h2>
 
       <ul>
-      <% ticket.errors.full_messages.each do |message| %>
+      <% @errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :ticket_description %>
-  </div>
+  <fieldset>
+    <legend>Evento</legend>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :ticket_quantity %>
-  </div>
+    <div class="form-group" id="evento-existente">
+      <%= form.collection_select :event_id, @events, :id, :name, { prompt: true }, { id: :ticket_event_id, class: 'form-control' } %>
+        <small class="pull-right"><a href="#" id="habilitar-evento-novo">Quero cadastrar um novo evento!</a></small>
+    </div>
 
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value, id: :ticket_value %>
-  </div>
+    <div id="evento-novo" class="hide">
+       <%= fields_for :event do |fields_event| %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :ticket_email %>
-  </div>
+           <div class="form-group">
+                <%= fields_event.label :name, 'Nome' %>
+                <%= fields_event.text_field :name, id: :event_name, class: 'form-control' %>
+           </div>
 
-  <div class="field">
-    <%= form.label :profiles %>
-    <%= form.text_field :profiles, id: :ticket_profiles %>
-  </div>
+           <div class="form-group">
+                <%= fields_event.label :date, 'Data' %>
+                <%= fields_event.text_field :date, id: :event_date, class: 'form-control' %>
+           </div>
 
-  <div class="field">
-    <%= form.label :event_id %>
-    <%= form.collection_select :event_id, @events, :id, :name, id: :ticket_event_id %>
-  </div>
+           <div class="form-group">
+               <%= fields_event.label :city, 'Cidade' %>
+               <%= fields_event.text_field :city, id: :event_city, class: 'form-control' %>
+           </div>
+
+            <div class="form-group">
+                <%= fields_event.label :state, 'Estado' %>
+                <%= fields_event.text_field :state, id: :event_state, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= fields_event.label :country, 'País' %>
+                <%= fields_event.text_field :country, id: :event_country, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= fields_event.label :image, 'Imagem (url completa)' %>
+                <%= fields_event.text_field :image, id: :event_image, class: 'form-control' %>
+            </div>
+        <% end %>
+
+    </div>
+  </fieldset>
+
+  <fieldset>
+      <legend>Ingresso</legend>
+
+      <div class="form-group">
+        <%= form.label :description, 'Descrição (meia entrada, inteira, passe para dias, etc)' %>
+        <%= form.text_field :description, id: :ticket_description, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :quantity, 'Quantidade' %>
+        <%= form.number_field :quantity, id: :ticket_quantity, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :value, 'Valor unitário' %>
+        <%= form.text_field :value, id: :ticket_value, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :email, 'Email' %>
+        <%= form.text_field :email, id: :ticket_email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :profiles, 'Twitter, Facebook, Instagram, etc.' %>
+        <%= form.text_field :profiles, id: :ticket_profiles, class: 'form-control' %>
+    </div>
+  </fieldset>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Anunciar', { class: 'btn btn-primary pull-right' } %>
   </div>
 <% end %>
+
+<%= javascript_include_tag 'tickets', 'data-turbolinks-track': 'reload' %>
+

@@ -1,0 +1,24 @@
+/* line 1, /myapp/app/assets/stylesheets/events.scss */
+.events-item {
+  margin-bottom: 30px;
+}
+/* line 4, /myapp/app/assets/stylesheets/events.scss */
+.events-item img {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 11, /myapp/app/assets/stylesheets/events.scss */
+.event-header {
+  background: no-repeat right center;
+  background-size: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+/* line 17, /myapp/app/assets/stylesheets/events.scss */
+.event-header * {
+  background: #fff;
+  display: table;
+  padding: 3px;
+}

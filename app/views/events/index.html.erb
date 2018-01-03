@@ -1,35 +1,22 @@
+<%= stylesheet_link_tag 'events', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>Image</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
     <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.date %></td>
-        <td><%= event.city %></td>
-        <td><%= event.state %></td>
-        <td><%= event.country %></td>
-        <td><%= event.image %></td>
-        <td><%= link_to 'Show', event %></td>
-      </tr>
+      <div class="col-lg-3 col-md-4 col-sm-6 events-item">
+        <div class="card h-100">
+          <%= link_to(event) do %>
+            <%= image_tag(event.image) %>
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to event.name, event %></h4>
+          </div>
+          <p class="card-text">
+            <%= event.date %> em <%= event.city %>/<%= event.state %> (<%= event.country %>)
+          </p>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to 'New Event', new_event_path %>

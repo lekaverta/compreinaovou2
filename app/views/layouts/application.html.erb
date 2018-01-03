@@ -2,13 +2,49 @@
 <html>
   <head>
     <title>Compreinaovou2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Alterar anúncio</a></li>
+            <li><a href="#">Como funciona</a></li>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="brand">
+        <a href="/"><label class="first">Comprei e</label><span>NAO</span><label class="second">vou</label></a>
+    </div>
+
+    <div class="container">
+      <div class="anuncie">
+        <%= link_to 'Anuncie seu ingresso!', new_ticket_path, class: 'btn btn-danger pull-right btn-xlarge' %>
+      </div>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
+

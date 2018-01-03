@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "select2";
+
+@font-face {
+    font-family: 'Tagster';
+    src: url('Tagster.woff2') format('woff2'),
+         url('Tagster.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    padding-bottom: 20px;
+}
+
+.brand {
+    padding: 0px 40px 20px 40px;
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    label {
+        font-family: 'Indie Flower';
+        font-size: 72px;
+        font-weight: normal;
+    }
+
+    .first {
+        margin-right:20px;
+    }
+
+    .second {
+        margin-left: 130px;
+    }
+
+    span {
+        font-family: 'Tagster';
+        font-size: 100px;
+        position: absolute;
+        margin-top: -25px;
+        color: #d9534f;
+    }
+}
+
+.btn-xlarge {
+    padding: 7px 70px;
+    font-size: 20px;
+    line-height: normal;
+}
+
+.anuncie {
+    overflow: hidden;
+    padding: 5px 0px;
+    margin-bottom: 15px;
+}
+
+.hide {
+    display: none;
+}
+
+#notice {
+    display: block;
+}

@@ -1,3 +1,23 @@
-// Place all the styles related to the Events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.events-item {
+  margin-bottom: 30px;
+
+  img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.event-header {
+    background: no-repeat right center;
+    background-size: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+
+    * {
+        background: #fff;
+        display: table;
+        padding: 3px;
+    }
+}
